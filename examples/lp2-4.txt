@@ -1,0 +1,7 @@
+# Kap2-1_2-10 7:19
+# Optimum should be z = 300, with x1 = 5 and x2 = 30
+max  z = 12x1 + 8x2
+s.d.      4x1 + 2x2 <= 80
+          2x1 + 3x2 <= 100
+          5x1 +  x2 <= 75
+           x1,   x2 >= 0

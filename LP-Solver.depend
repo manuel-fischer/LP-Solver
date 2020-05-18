@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1589799714 source:c:\users\user\documents\github\lp-solver\src\main.cpp
+	<iostream>
+	"lp-model-parser.hpp"
+	"lp-model-out.hpp"
+	"lp-model-classify.hpp"
+	"lp-model-transform.hpp"
+
+1589797394 c:\users\user\documents\github\lp-solver\src\lp-model-parser.hpp
+	<fstream>
+	<optional>
+	<string>
+	<string_view>
+	<charconv>
+	<algorithm>
+	<iterator>
+	"lp-model.hpp"
+	"parsing-error.hpp"
+
+1589748672 c:\users\user\documents\github\lp-solver\src\lp-model.hpp
+	<vector>
+	"var-registry.hpp"
+
+1589798778 c:\users\user\documents\github\lp-solver\src\var-registry.hpp
+	<string>
+	<string_view>
+	<unordered_map>
+	"parsing-error.hpp"
+
+1589797445 c:\users\user\documents\github\lp-solver\src\parsing-error.hpp
+	<exception>
+	<sstream>
+
+1589751923 c:\users\user\documents\github\lp-solver\src\lp-model-out.hpp
+	<cmath>
+
+1589799632 c:\users\user\documents\github\lp-solver\src\lp-model-classify.hpp
+	"lp-model.hpp"
+
+1589799689 c:\users\user\documents\github\lp-solver\src\lp-model-transform.hpp
+	"lp-model.hpp"
+	"lp-model-classify.hpp"
+
