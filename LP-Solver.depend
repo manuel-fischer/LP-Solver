@@ -1,10 +1,15 @@
 # depslib dependency file v1.0
-1589799714 source:c:\users\user\documents\github\lp-solver\src\main.cpp
+1589829264 source:c:\users\user\documents\github\lp-solver\src\main.cpp
 	<iostream>
+	"lp-model.hpp"
 	"lp-model-parser.hpp"
 	"lp-model-out.hpp"
 	"lp-model-classify.hpp"
 	"lp-model-transform.hpp"
+	"lp-tableau.hpp"
+	"lp-tableau-create.hpp"
+	"lp-tableau-out.hpp"
+	<cassert>
 
 1589797394 c:\users\user\documents\github\lp-solver\src\lp-model-parser.hpp
 	<fstream>
@@ -21,23 +26,50 @@
 	<vector>
 	"var-registry.hpp"
 
-1589798778 c:\users\user\documents\github\lp-solver\src\var-registry.hpp
+1589823092 c:\users\user\documents\github\lp-solver\src\var-registry.hpp
 	<string>
 	<string_view>
 	<unordered_map>
 	"parsing-error.hpp"
+	"iota-iterator.hpp"
 
 1589797445 c:\users\user\documents\github\lp-solver\src\parsing-error.hpp
 	<exception>
 	<sstream>
 
-1589751923 c:\users\user\documents\github\lp-solver\src\lp-model-out.hpp
+1589819702 c:\users\user\documents\github\lp-solver\src\lp-model-out.hpp
 	<cmath>
+	"lp-model-classify.hpp"
 
-1589799632 c:\users\user\documents\github\lp-solver\src\lp-model-classify.hpp
+1589823813 c:\users\user\documents\github\lp-solver\src\lp-model-classify.hpp
 	"lp-model.hpp"
+	<algorithm>
 
-1589799689 c:\users\user\documents\github\lp-solver\src\lp-model-transform.hpp
+1589829414 c:\users\user\documents\github\lp-solver\src\lp-model-transform.hpp
 	"lp-model.hpp"
 	"lp-model-classify.hpp"
+	<algorithm>
+
+1589824268 c:\users\user\documents\github\lp-solver\src\iota-iterator.hpp
+
+1589828501 c:\users\user\documents\github\lp-solver\src\lp-tableau.hpp
+
+1589829575 c:\users\user\documents\github\lp-solver\src\lp-tableau-create.hpp
+	"lp-tableau.hpp"
+	"lp-model-util.hpp"
+	"range-if.hpp"
+	<functional>
+
+1589829097 c:\users\user\documents\github\lp-solver\src\lp-model-util.hpp
+	"lp-model.hpp"
+	<algorithm>
+
+1589828716 c:\users\user\documents\github\lp-solver\src\range-if.hpp
+	"iterator-if.hpp"
+
+1589829242 c:\users\user\documents\github\lp-solver\src\iterator-if.hpp
+
+1589829922 c:\users\user\documents\github\lp-solver\src\lp-tableau-out.hpp
+	"lp-tableau.hpp"
+	<iomanip>
 

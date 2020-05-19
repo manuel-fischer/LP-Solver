@@ -5,6 +5,7 @@
 #include <unordered_map>
 
 #include "parsing-error.hpp"
+#include "iota-iterator.hpp"
 
 using var_t = size_t;
 
@@ -57,4 +58,8 @@ struct var_registry_t {
     {
         return vars2str.size();
     }
+
+    iota_iterator<var_t> begin() const { return {0};      }
+    iota_iterator<var_t> end()   const { return {size()}; }
+
 };

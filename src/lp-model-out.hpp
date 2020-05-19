@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath> // -> abs
+#include "lp-model-classify.hpp" // -> is_non_negativity_condition
 
     template<class OStream>
 void print(OStream& out, linear_var_t const& var, var_registry_t const& reg)
@@ -77,13 +78,28 @@ OStream& operator<<(OStream& out, lp_model_t const& model)
     out << "\n\n";
 
     bool first = true;
+    // first print conditions, that are not non-negativity conditions
     for(auto& limit : model.limits)
     {
+        if(is_non_negativity_condition(limit)) continue;
         print(out, limit, model.vars, first);
         out << '\n';
 
         first = false;
     }
+    // then print non-negativity conditions compacted
+    bool first_var = true;
+    for(auto& limit : model.limits)
+    {
+        if(!is_non_negativity_condition(limit)) continue;
+
+        out << (first_var ? (first ? "s.d. " : "     ") : ", ");
+        print(out, limit.func.terms[0], model.vars);
+
+        first_var = false;
+    }
+    // if there was a variable, with a non-negativity condition, print >= 0
+    if(!first_var) out << " >= 0\n";
 
     return out;
 }
