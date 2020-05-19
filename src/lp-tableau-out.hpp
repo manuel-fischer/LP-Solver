@@ -56,12 +56,10 @@ OStream& operator<<(OStream& out, fill b)
     template<class OStream>
 OStream& operator<<(OStream& out, tableau_t const& tableau)
 {
-    // v: n+m
-    // n: number of normal & help variables,
-    // m: number of slack variables/limits
-    size_t v = count_tableau_variables(tableau.model.vars);
+    // n: number of columns = number of normal & help variables
+    // m: number of row     = number of normal, help & slack variables/limits
+    size_t n = count_tableau_variables(tableau.model.vars);
     size_t m = count_variables_of_type(tableau.model.vars, SLACK);
-    size_t n = v-m;
 
     auto w = std::max<size_t>(3, out.width());
     auto sw = std::setw(w);
@@ -94,11 +92,11 @@ OStream& operator<<(OStream& out, tableau_t const& tableau)
         out << (first ? "BV " : "   ");
         out << sw<<vars.name(tableau.basis_variables[i]);
         out << " |";
-        for(size_t j = 0; j < n+m; ++j)
+        for(size_t j = 0; j < n; ++j)
         {
-            out << ' ' << sw<<number_out{tableau.inner.at(j, i)};
+            out << ' ' << sw<<number_out{tableau.inner._(i,j)};
         }
-        out << " | " << sw<<number_out{tableau.inner.at(n+m, i)};
+        out << " | " << sw<<number_out{tableau.inner._(i,n)};
         out << '\n';
 
         first = false;
@@ -117,11 +115,11 @@ OStream& operator<<(OStream& out, tableau_t const& tableau)
     out << "   ";
     out << sw<<"/\\z";
     out << " |";
-    for(size_t j = 0; j < n+m; ++j)
+    for(size_t j = 0; j < n; ++j)
     {
-        out << ' ' << sw<<number_out{tableau.inner.at(j, m)};
+        out << ' ' << sw<<number_out{tableau.inner._(m,j)};
     }
-    out << " | " << sw<<number_out{tableau.inner.at(n+m, m)};
+    out << " | " << sw<<number_out{tableau.inner._(m,n)};
     out << '\n';
 
     return out;

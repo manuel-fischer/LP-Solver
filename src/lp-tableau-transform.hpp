@@ -3,14 +3,20 @@
 #include "lp-tableau.hpp"
 #include "range-if.hpp"
 
+
+// is optimal
+bool is_dually_valid(tableau_t const& tableau)
+{
+
+}
+
+
 std::pair<size_t, size_t> select_pivot(tableau_t const& tableau)
 {
-    // v: n+m
-    // n: number of normal & help variables,
-    // m: number of slack variables/limits -- number of basis variables
-    size_t v = tableau.variables.size();
+    // n: number of columns = number of normal & help variables
+    // m: number of row     = number of normal, help & slack variables/limits
+    size_t n = tableau.variables.size();
     size_t m = tableau.basis_variables.size();
-    size_t n = v-m;
 
 
     auto is_basis_variable = [&](var_t var) {
@@ -24,12 +30,12 @@ std::pair<size_t, size_t> select_pivot(tableau_t const& tableau)
     // Find pivot column
     size_t l = -1u;
     big_number_t delta_z_l = 0;
-    for(size_t j = 0; j < n+m; ++j)
+    for(size_t j = 0; j < n; ++j)
     {
         if(is_basis_variable(tableau.variables[i])) continue;
 
         auto delta_z_j = tableau.inner.at(j, m);
-        if(delta_z_j < 0 && delta_z_l ??? delta_z_j)
+        if(delta_z_j < 0 && delta_z_j < delta_z_l)
         {
             l = j;
             delta_z_l = delta_z_j;

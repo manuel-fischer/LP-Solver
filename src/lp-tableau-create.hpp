@@ -17,18 +17,16 @@ matrix_t matrix_create(size_t width, size_t height)
 
 tableau_t tableau_create(lp_model_t const& model)
 {
-    // v: n+m
-    // n: number of normal & help variables,
-    // m: number of slack variables/limits
-    size_t v = count_tableau_variables(model.vars);
+    // n: number of columns = number of normal & help variables
+    // m: number of row     = number of normal, help & slack variables/limits
+    size_t n = count_tableau_variables(model.vars);
     size_t m = count_variables_of_type(model.vars, SLACK);
-    size_t n = v-m;
 
     tableau_t tableau {model /* rest 0 */};
     //tableau.cj_row = matrix_create(n+m, 1);
-    tableau.variables.resize(n+m);
+    tableau.variables.resize(n);
     tableau.basis_variables.resize(m);
-    tableau.inner = matrix_create(n+m+1, m+1);
+    tableau.inner = matrix_create(n+1, m+1);
 
     // fill in the variable names
     std::copy_if(model.vars.begin(), model.vars.end(),
@@ -49,12 +47,12 @@ tableau_t tableau_create(lp_model_t const& model)
         size_t j = 0;
         for(auto& var : tableau.variables)
         {
-            tableau.inner.at(j, i) = get_coefficient(restriction.func, var);
+            tableau.inner._(i,j) = get_coefficient(restriction.func, var);
             j++;
         }
 
         // fill in rs column
-        tableau.inner.at(n+m, i) = restriction.limit;
+        tableau.inner._(i,n) = restriction.limit;
         i++;
     }
 
@@ -62,12 +60,12 @@ tableau_t tableau_create(lp_model_t const& model)
     size_t j = 0;
     for(auto& var : tableau.variables)
     {
-        tableau.inner.at(j, m) = -get_coefficient(model.objective_function.objective_linear, var);
+        tableau.inner._(m,j) = -get_coefficient(model.objective_function.objective_linear, var);
         j++;
     }
 
     // fill in result cell
-    tableau.inner.at(n+m, m) = 0;
+    tableau.inner._(m,n) = 0;
 
     return tableau; // RVO
 }
