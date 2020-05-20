@@ -57,15 +57,15 @@ OStream& operator<<(OStream& out, fill b)
 OStream& operator<<(OStream& out, tableau_t const& tableau)
 {
     // n: number of columns = number of normal & help variables
-    // m: number of row     = number of normal, help & slack variables/limits
-    size_t n = count_tableau_variables(tableau.model.vars);
-    size_t m = count_variables_of_type(tableau.model.vars, SLACK);
+    // m: number of rows    = number of normal, help & slack variables/limits
+    size_t n = count_tableau_variables(tableau.model->vars);
+    size_t m = count_variables_of_type(tableau.model->vars, SLACK);
 
     auto w = std::max<size_t>(3, out.width());
     auto sw = std::setw(w);
     out.width(0);
 
-    auto& vars = tableau.model.vars;
+    auto& vars = tableau.model->vars;
 
 
     // top row

@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="examples/lp2-4a.txt" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -20,10 +21,9 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="examples/lp2-4.txt" />
+				<Option parameters="examples/lp2-4b.txt" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-std=c++17" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,8 +32,10 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++17" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="src/html-output.hpp" />
 		<Unit filename="src/iota-iterator.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -52,10 +54,22 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="src/lp-model.hpp" />
+		<Unit filename="src/lp-solution.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="src/lp-tableau-classify.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="src/lp-tableau-create.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="src/lp-tableau-out-html.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="src/lp-tableau-out.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="src/lp-tableau-transform.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="src/lp-tableau.hpp">

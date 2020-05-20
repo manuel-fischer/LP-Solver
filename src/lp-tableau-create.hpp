@@ -18,12 +18,13 @@ matrix_t matrix_create(size_t width, size_t height)
 tableau_t tableau_create(lp_model_t const& model)
 {
     // n: number of columns = number of normal & help variables
-    // m: number of row     = number of normal, help & slack variables/limits
+    // m: number of rows    = number of normal, help & slack variables/limits
     size_t n = count_tableau_variables(model.vars);
     size_t m = count_variables_of_type(model.vars, SLACK);
 
-    tableau_t tableau {model /* rest 0 */};
+    tableau_t tableau;
     //tableau.cj_row = matrix_create(n+m, 1);
+    tableau.model = &model;
     tableau.variables.resize(n);
     tableau.basis_variables.resize(m);
     tableau.inner = matrix_create(n+1, m+1);

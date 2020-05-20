@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1589829264 source:c:\users\user\documents\github\lp-solver\src\main.cpp
+1589978971 source:c:\users\user\documents\github\lp-solver\src\main.cpp
 	<iostream>
 	"lp-model.hpp"
 	"lp-model-parser.hpp"
@@ -9,6 +9,7 @@
 	"lp-tableau.hpp"
 	"lp-tableau-create.hpp"
 	"lp-tableau-out.hpp"
+	"lp-tableau-transform.hpp"
 	<cassert>
 
 1589797394 c:\users\user\documents\github\lp-solver\src\lp-model-parser.hpp
@@ -52,9 +53,9 @@
 
 1589824268 c:\users\user\documents\github\lp-solver\src\iota-iterator.hpp
 
-1589922536 c:\users\user\documents\github\lp-solver\src\lp-tableau.hpp
+1589974972 c:\users\user\documents\github\lp-solver\src\lp-tableau.hpp
 
-1589922338 c:\users\user\documents\github\lp-solver\src\lp-tableau-create.hpp
+1589974994 c:\users\user\documents\github\lp-solver\src\lp-tableau-create.hpp
 	"lp-tableau.hpp"
 	"lp-model-util.hpp"
 	"range-if.hpp"
@@ -69,8 +70,16 @@
 
 1589829242 c:\users\user\documents\github\lp-solver\src\iterator-if.hpp
 
-1589922544 c:\users\user\documents\github\lp-solver\src\lp-tableau-out.hpp
+1589975021 c:\users\user\documents\github\lp-solver\src\lp-tableau-out.hpp
 	"lp-tableau.hpp"
 	<iostream>
 	<iomanip>
+
+1589979123 c:\users\user\documents\github\lp-solver\src\lp-tableau-transform.hpp
+	"lp-tableau-classify.hpp"
+	"lp-tableau.hpp"
+	"range-if.hpp"
+
+1589975087 c:\users\user\documents\github\lp-solver\src\lp-tableau-classify.hpp
+	"lp-tableau.hpp"
 
